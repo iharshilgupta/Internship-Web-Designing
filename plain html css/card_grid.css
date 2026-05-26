@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: lightgoldenrodyellow;
+}
+h1,
+h2 {
+  text-align: center;
+  background: transparent;
+}
+#cen {
+  place-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.card {
+  display: grid;
+  background-color: red;
+  max-width: 18rem;
+  width: 100%;
+  gap: 5rem;
+  padding: 1rem;
+  grid-template-rows: 1fr auto;
+  background-color: red;
+  grid-template-columns: repeat(auto-fit, minmax(6.25rem, 1fr));
+  border-radius: 1rem;
+  transition:
+    transform 0.2s ease-in,
+    opacity 0.3s ease-in-out;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 3rem 1.125rem 1rem 0.0625rem rgba(208, 47, 6, 0.19);
+  border-radius: 1rem;
+}
+.card button {
+  display: inline-block;
+  min-width: 2rem;
+  min-height: 3rem;
+  background-color: rgb(86, 18, 159);
+}
+.card button:hover {
+  background-color: darkslateblue;
+  cursor: pointer;
+}
+button:hover {
+  background-color: darkslateblue;
+  transform: scale(1.05);
+  box-shadow: 3rem 1.125rem 1rem 0.0625rem rgba(208, 47, 6, 0.19);
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: end;
+}
+#end {
+  grid-column: 1 / -1;
+  background-color: rgb(86, 18, 159);
+  cursor: pointer;
+  align-self: start;
+  justify-self: center;
+}
+@media (max-width: 768px) {
+  #cen {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #cen {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0.5rem;
+  }
+}

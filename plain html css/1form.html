@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Form</title>
+    <link rel="stylesheet" href="1form.css" />
+  </head>
+  <body>
+    <div class="mainc">
+      <div class="bor">
+        <h1 style="margin-bottom: 2rem">Employee Form Registration</h1>
+        <form>
+          <h2 style="text-align: center">Primary Information</h2>
+          <p style="text-align: center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quidem
+            deleniti tempore, quas accusantium, cum fugiat, sed iste placeat
+            minima assumenda sunt autem! Dicta, voluptatum nisi tempore vel qui
+            praesentium.
+          </p>
+          <div class="fcontainer">
+            <div class="fullline">
+              <h3>Full Name</h3>
+              <input placeholder="Type here..." required />
+            </div>
+            <div class="fullline">
+              <h3>Address Line 1</h3>
+              <input placeholder="Type here..." required />
+            </div>
+            <div class="fullline">
+              <h3>Address Line 2</h3>
+              <input placeholder="Type here..." required />
+            </div>
+          </div>
+
+          <!--perfect till here checkpoint 1-->
+          <h2 style="text-align: center">Contact Information</h2>
+          <div class="ccontainer">
+            <div class="card">
+              <h3>Email</h3>
+              <input type="email" placeholder="joe@example.com" required />
+            </div>
+            <div class="card">
+              <h3>Phone Number</h3>
+              <input type="number" placeholder="123-456-7890" required />
+            </div>
+            <div class="card">
+              <h3>Whatsapp number</h3>
+              <input type="number" placeholder="123-456-7890" required />
+            </div>
+            <div class="card">
+              <h3>Alternate Phone Number</h3>
+              <input type="number" placeholder="123-456-7890" />
+            </div>
+          </div>
+
+          <h2 style="text-align: center">Other details</h2>
+          <div class="ccontainer">
+            <div class="card">
+              <h3>Date of Birth</h3>
+              <input type="date" placeholder="DD-MM-YYYY" required />
+            </div>
+            <div class="card">
+              <h3>Department</h3>
+              <select>
+                <option value="se">Select Department</option>
+                <option value="hr">HR</option>
+                <option value="it">IT</option>
+                <option value="sales">Sales</option>
+              </select>
+            </div>
+            <div class="card">
+              <h3>Gender</h3>
+              <div class="rg">
+                <input type="radio" name="gender" id="m" required />
+                <label for="m">Male</label>
+                <input type="radio" name="gender" id="f" required />
+                <label for="f">Female</label>
+                <input type="radio" name="gender" id="o" required />
+                <label for="o">Other</label>
+                <input type="radio" name="gender" id="t" required />
+                <label for="t">Transgender</label>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Experience (Years)</h3>
+              <input
+                type="number"
+                min="0"
+                max="50"
+                placeholder="Years..."
+                required
+              />
+            </div>
+            <div class="card">
+              <h3>Upload your Resume with passport size photo</h3>
+              <input type="file" placeholder="Drag or drop files here..." />
+            </div>
+
+            <div class="range-container">
+              <h3>Working hours preferred</h3>
+              <div class="range-group"></div>
+              <span>6</span>
+              <input
+                type="range"
+                min="6"
+                max="14"
+                value="8"
+                step="1"
+                class="hrange"
+              />
+              <span>14</span>
+            </div>
+          </div>
+
+          <div class="review">
+            <h3>Review and self assesment</h3>
+            <textarea name="review" id="review" required>type here...</textarea>
+          </div>
+          <!--good till here checkpoint2-->
+          <div class="check">
+            <input
+              type="checkbox"
+              id="terms"
+              style="width: auto; height: auto"
+            />
+            I agree to the company policies
+          </div>
+
+          <div class="end">
+            <button
+              style="
+                background: #333;
+                color: white;
+                border-radius: 0.2rem;
+                cursor: pointer;
+              "
+            >
+              Register Employee
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

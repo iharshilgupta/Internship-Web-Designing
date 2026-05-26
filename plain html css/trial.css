@@ -1,0 +1,19 @@
+h1{
+position: relative;
+max-width: fit-content;
+}
+h1::after{
+    content: '';
+    height: .5rem;
+    width: 100%;
+    background-color: gold;
+    background-image: linear-gradient(to right,gold , silver);
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    scale: 0;
+    transition: scale 200ms ease;
+}
+h1:hover::after{
+    scale:1;
+}

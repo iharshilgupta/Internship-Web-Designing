@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="first.css" />
+    <title>First sample</title>
+    <style>
+      div {
+        background-color: rgb(128, 177, 246);
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        max-width: 500px;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      p {
+        font-size: medium;
+        margin: 20px;
+      }
+
+      button {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px;
+        border: 5px solid #000;
+      }
+
+      button:hover {
+        background-color: midnightblue;
+      }
+      button:active {
+        background-color: #000;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Heading title for the page</h1>
+    <div>
+      <p>?</p>
+      <button>Click me</button>
+      <strong> Strong text</strong>
+    </div>
+    <section>
+      <p>
+        <a class="one" href="https://www.proppik.com/" target="_blank"
+          >Link for the website.</a
+        >
+      </p>
+    </section>
+    <div>
+      <a href="first.html" target="_blank">
+        <img
+          src="jaw.png"
+          alt="jawhar waterfall"
+          style="
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+            text-align: center;
+          "
+        />
+      </a>
+    </div>
+    <div class="container">
+      <div style="order: 2">1</div>
+      <div style="order: 1">2</div>
+    </div>
+
+    <script>
+      var buttonElement = document.querySelector("button");
+      var textElement = document.querySelector("p");
+      buttonElement.addEventListener("click", changeText, false);
+      function changeText(e) {
+        textElement.innerText = "Click successful";
+      }
+    </script>
+  </body>
+</html>
