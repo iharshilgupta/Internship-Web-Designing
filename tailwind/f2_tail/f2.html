@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F2</title>
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+    .swiper-button-prev{
+        width: 24px !important;
+        height: 24px !important;
+        border-radius: 50%;
+        background: #f8c8aa;
+    }
+    .swiper-button-next {
+        width: 24px !important;
+        height: 24px !important;
+        border-radius: 50%;
+        background: #E89F71;
+    }
+    .swiper-button-prev::after{
+        font-size: 8px !important;
+        font-weight: bold;
+        color: #E89F71;
+    }
+    .swiper-button-next::after {
+        font-size: 8px !important;
+        font-weight: bold;
+        color: white;
+    }
+    .swiper-button-prev {
+        position: absolute;
+        left: auto !important;
+        right: 60px !important;
+        top: -10px !important;
+    }
+    .swiper-button-next {
+        position: absolute;
+        right:30px !important;
+        top: -10px !important;
+    }
+    .swiper-pagination {
+        width: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%);
+        top: -30px !important;
+        position: absolute !important; 
+        bottom: auto !important;
+    }
+    .swiper-pagination-bullet {
+        width: 10px !important;
+        height: 10px !important;
+        background: #d9d9d9 !important;
+        opacity: 1 !important;
+        margin: 0 8px !important;
+    }
+    .swiper-pagination-bullet-active {
+        background: #E89F71 !important;
+        position: relative;
+    }
+    .swiper-pagination-bullet-active::before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #E89F71;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .swiper-button-prev::after,.swiper-button-next::after {
+        font-size: 8px !important;
+    }
+    .hero-next{
+        position: absolute;
+        z-index:100;
+    }
+    .custom-nav button{
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50%;
+        background: #ffffff;
+        text-align: center;
+    }
+    .custom-nav button::after {
+        font-size: 18px !important;
+        font-weight: bold;
+        color: rgb(192, 110, 29);
+        right: 20px;
+    }
+    .tips-n{
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50%;
+        background: #ffffff;
+        text-align: center;
+    }
+    .tips-n::after {
+        font-size: 18px !important;
+        font-weight: bold;
+        color: rgb(192, 110, 29);
+        right: 20px;
+    }
+    .tips-p{
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50%;
+        background: #ffffff;
+        text-align: center;
+    }
+    .tips-p::after {
+        font-size: 18px !important;
+        font-weight: bold;
+        color: rgb(192, 110, 29);
+        right: 20px;
+    }
+    .rooms-pagination{
+         margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    @media (min-width: 767px) {
+    .swiper-button-prev,.swiper-button-next {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .swiper-button-prev::after,.swiper-button-next::after {
+        font-size: 16px !important;
+    }
+    .swiper-button-prev {
+        right: 120px !important;
+        top: -20px !important;
+    }
+    .swiper-button-next {
+        right: 70px !important;
+        top: -20px !important;
+    }
+    .swiper-pagination {
+        top: -40px !important;
+        transform: translateX(-50%) !important;
+    }
+}
+@media (min-width: 1023px) {
+    .swiper-button-prev,.swiper-button-next {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .swiper-button-prev::after,.swiper-button-next::after {
+        font-size: 22px !important;
+    }
+    .swiper-button-prev {
+        top: -50px !important;
+        right: 150px !important;
+    }
+    .swiper-button-next {
+        top: -50px !important;
+        right: 80px !important;
+    }
+    .swiper-pagination {
+        top: -50px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: auto !important;
+    }
+}
+    </style>
+</head>
+<body class="font-pop">
+    <header>
+        <div id="navigation" class="bg-creme/60">
+            <div class="flex relative justify-evenly items-center pt-4 pb-16 px-4 md:px-8 lg:px-12 md:pt-8 md:pb-[4rem] xl:pt-12 lg:pt-8 lg:pb-[10rem] ">
+                <a href="" class="font-bold text-2xl">Funiro.</a>
+                <ul class="hidden lg:flex items-center ml-8">
+                    <li>
+                        <button data-dropdown-toggle="droppro" class="flex items-center gap-1 px-6 font-medium text-heading">Products                  
+                            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z" fill="#000000"/>
+                            </svg> 
+                        </button>  
+                    </li>
+                    <li>
+                        <button data-dropdown-toggle="droprooms" class="flex items-center gap-1 px-6 font-medium text-heading">Rooms                  
+                            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z" fill="#000000"/>
+                            </svg> 
+                        </button>  
+                    </li>
+                    <li><a href="#" class="px-6 font-medium text-heading">Inspirations</a></li>
+                </ul>
+                
+                <form class="hidden lg:flex flex-1 justify-center px-4 lg:ml-auto">
+                    <div class="flex w-full max-w-[22rem] xl:max-w-[26rem] bg-white">
+                    <svg fill="#000000" width="15px" height="15px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 m-3.5">
+                            <path d="M31.707 30.282l-9.717-9.776c1.811-2.169 2.902-4.96 2.902-8.007 0-6.904-5.596-12.5-12.5-12.5s-12.5 5.596-12.5 12.5 5.596 12.5 12.5 12.5c3.136 0 6.002-1.158 8.197-3.067l9.703 9.764c0.39 0.39 1.024 0.39 1.415 0s0.39-1.023 0-1.415zM12.393 23.016c-5.808 0-10.517-4.709-10.517-10.517s4.708-10.517 10.517-10.517c5.808 0 10.516 4.708 10.516 10.517s-4.709 10.517-10.517 10.517z"></path>
+                        </svg>
+                        <input type="search" id="search" class="flex w-full max-w-96 justify-items-center xl:text-[16px] lg:text-[11px]" placeholder="Search for minimalist chair"/>
+                    </div>
+                </form>
+                <div id="nav-icons" class="hidden lg:flex gap-3 items-center justify-between w-40 ml-auto">
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.62436 4.4241C3.96537 5.18243 2.75 6.98614 2.75 9.13701C2.75 11.3344 3.64922 13.0281 4.93829 14.4797C6.00072 15.676 7.28684 16.6675 8.54113 17.6345C8.83904 17.8642 9.13515 18.0925 9.42605 18.3218C9.95208 18.7365 10.4213 19.1004 10.8736 19.3647C11.3261 19.6292 11.6904 19.7499 12 19.7499C12.3096 19.7499 12.6739 19.6292 13.1264 19.3647C13.5787 19.1004 14.0479 18.7365 14.574 18.3218C14.8649 18.0925 15.161 17.8642 15.4589 17.6345C16.7132 16.6675 17.9993 15.676 19.0617 14.4797C20.3508 13.0281 21.25 11.3344 21.25 9.13701C21.25 6.98614 20.0346 5.18243 18.3756 4.4241C16.7639 3.68739 14.5983 3.88249 12.5404 6.02065C12.399 6.16754 12.2039 6.25054 12 6.25054C11.7961 6.25054 11.601 6.16754 11.4596 6.02065C9.40166 3.88249 7.23607 3.68739 5.62436 4.4241ZM12 4.45873C9.68795 2.39015 7.09896 2.10078 5.00076 3.05987C2.78471 4.07283 1.25 6.42494 1.25 9.13701C1.25 11.8025 2.3605 13.836 3.81672 15.4757C4.98287 16.7888 6.41022 17.8879 7.67083 18.8585C7.95659 19.0785 8.23378 19.292 8.49742 19.4998C9.00965 19.9036 9.55954 20.3342 10.1168 20.6598C10.6739 20.9853 11.3096 21.2499 12 21.2499C12.6904 21.2499 13.3261 20.9853 13.8832 20.6598C14.4405 20.3342 14.9903 19.9036 15.5026 19.4998C15.7662 19.292 16.0434 19.0785 16.3292 18.8585C17.5898 17.8879 19.0171 16.7888 20.1833 15.4757C21.6395 13.836 22.75 11.8025 22.75 9.13701C22.75 6.42494 21.2153 4.07283 18.9992 3.05987C16.901 2.10078 14.3121 2.39015 12 4.45873Z" fill="#1C274C"/>
+                    </svg>
+                    <svg width="35px" height="35px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 0, 0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.24000000000000005"/>
+                        <g id="SVGRepo_iconCarrier"> <path d="M5.60464 11.4417C5.79269 13.1343 5.88672 13.9805 6.45624 14.4903C7.02576 15 7.87723 15 9.58017 15H9.70588H13.4706H14.827C16.0002 15 16.5867 15 17.0627 14.7134C17.5387 14.4268 17.8132 13.9084 18.3621 12.8716L20.8303 8.20947C21.361 7.207 20.6343 6 19.5 6V6H9.70588H9.46906C7.38336 6 6.34051 6 5.74427 6.66616C5.14803 7.33231 5.2632 8.36878 5.49353 10.4417L5.60464 11.4417Z" stroke="#323232" stroke-width="1.32" stroke-linejoin="round"/> <path d="M3 3H3.5V3C4.1642 3 4.72218 3.49942 4.79553 4.15955L5.55558 11" stroke="#323232" stroke-width="1.32" stroke-linecap="round" stroke-linejoin="round"/> <path d="M9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18C8.32843 18 9 18.6716 9 19.5Z" stroke="#323232" stroke-width="1.32"/> <path d="M18 19.5C18 20.3284 17.3284 21 16.5 21C15.6716 21 15 20.3284 15 19.5C15 18.6716 15.6716 18 16.5 18C17.3284 18 18 18.6716 18 19.5Z" stroke="#323232" stroke-width="1.32"/> </g>
+                    </svg>
+                    <div class="lg:w-8 lg:h-8 xl:h-12 xl:w-12">
+                        <img src="f5.webp" alt="" class="rounded-full object-cover w-full h-full">
+                    </div>
+                </div>
+                <button id="menuBtn" class="flex lg:hidden ml-auto items-center justify-center">
+                    <svg id="iconClose" class="w-8 h-8 hidden" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/>
+                    </svg>
+                    <svg id="iconHamburger" class="w-8 h-8 block" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div id="sbox" class="hidden lg:block absolute z-20 bg-white/75 w-[90%] xl:max-w-[500px] lg:max-w-[400px] top-8 min-h-[280px] lg:h-[450px] lg:top-[160px] lg:left-[48px] xl:h-[550px]">
+                    <div class="flex flex-col py-4 px-4 gap-3 lg:px-14 lg:py-14 lg:gap-10">
+                        <h1 class="text-4xl xl:text-5xl font-semibold max-w-[12ch]">High-Quality Furniture Just For You</h1>
+                        <p class="lg:text-[16px] xl:text-[18px]">Our furniture is made from selected and best quality materials that are suitable for your dream home</p>
+                        <button class="text-center text-white lg:text-xl xl:text-2xl bg-orange-400 xl:h-[5rem] lg:h-[3rem]">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden lg:hidden sm:text-[12px] flex-col gap-4 px-4 pb-12 bg-creme/60 text-center">
+                <ul class="flex flex-col gap-3 items-center">
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Rooms</a></li>
+                    <li><a href="#">Inspirations</a></li>
+                     <li><div class="flex w-[12rem] bg-white">
+                            <svg fill="#000000" width="10px" height="10px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 m-3.5">
+                                <path d="M31.707 30.282l-9.717-9.776c1.811-2.169 2.902-4.96 2.902-8.007 0-6.904-5.596-12.5-12.5-12.5s-12.5 5.596-12.5 12.5 5.596 12.5 12.5 12.5c3.136 0 6.002-1.158 8.197-3.067l9.703 9.764c0.39 0.39 1.024 0.39 1.415 0s0.39-1.023 0-1.415zM12.393 23.016c-5.808 0-10.517-4.709-10.517-10.517s4.708-10.517 10.517-10.517c5.808 0 10.516 4.708 10.516 10.517s-4.709 10.517-10.517 10.517z"></path>
+                             </svg>
+                            <input type="search" id="searcht" class="flex w-full max-w-96 justify-items-center text-[10px]" placeholder="Search for minimalist chair"/>
+                        </div>
+                    </li>
+                    <li><div id="nav-icon2" class="flex gap-3 items-center w-40 justify-center">
+                                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.62436 4.4241C3.96537 5.18243 2.75 6.98614 2.75 9.13701C2.75 11.3344 3.64922 13.0281 4.93829 14.4797C6.00072 15.676 7.28684 16.6675 8.54113 17.6345C8.83904 17.8642 9.13515 18.0925 9.42605 18.3218C9.95208 18.7365 10.4213 19.1004 10.8736 19.3647C11.3261 19.6292 11.6904 19.7499 12 19.7499C12.3096 19.7499 12.6739 19.6292 13.1264 19.3647C13.5787 19.1004 14.0479 18.7365 14.574 18.3218C14.8649 18.0925 15.161 17.8642 15.4589 17.6345C16.7132 16.6675 17.9993 15.676 19.0617 14.4797C20.3508 13.0281 21.25 11.3344 21.25 9.13701C21.25 6.98614 20.0346 5.18243 18.3756 4.4241C16.7639 3.68739 14.5983 3.88249 12.5404 6.02065C12.399 6.16754 12.2039 6.25054 12 6.25054C11.7961 6.25054 11.601 6.16754 11.4596 6.02065C9.40166 3.88249 7.23607 3.68739 5.62436 4.4241ZM12 4.45873C9.68795 2.39015 7.09896 2.10078 5.00076 3.05987C2.78471 4.07283 1.25 6.42494 1.25 9.13701C1.25 11.8025 2.3605 13.836 3.81672 15.4757C4.98287 16.7888 6.41022 17.8879 7.67083 18.8585C7.95659 19.0785 8.23378 19.292 8.49742 19.4998C9.00965 19.9036 9.55954 20.3342 10.1168 20.6598C10.6739 20.9853 11.3096 21.2499 12 21.2499C12.6904 21.2499 13.3261 20.9853 13.8832 20.6598C14.4405 20.3342 14.9903 19.9036 15.5026 19.4998C15.7662 19.292 16.0434 19.0785 16.3292 18.8585C17.5898 17.8879 19.0171 16.7888 20.1833 15.4757C21.6395 13.836 22.75 11.8025 22.75 9.13701C22.75 6.42494 21.2153 4.07283 18.9992 3.05987C16.901 2.10078 14.3121 2.39015 12 4.45873Z" fill="#1C274C"/>
+                                </svg>
+                                <svg width="25px" height="25px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 0, 0)">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.24000000000000005"/>
+                                    <g id="SVGRepo_iconCarrier"> <path d="M5.60464 11.4417C5.79269 13.1343 5.88672 13.9805 6.45624 14.4903C7.02576 15 7.87723 15 9.58017 15H9.70588H13.4706H14.827C16.0002 15 16.5867 15 17.0627 14.7134C17.5387 14.4268 17.8132 13.9084 18.3621 12.8716L20.8303 8.20947C21.361 7.207 20.6343 6 19.5 6V6H9.70588H9.46906C7.38336 6 6.34051 6 5.74427 6.66616C5.14803 7.33231 5.2632 8.36878 5.49353 10.4417L5.60464 11.4417Z" stroke="#323232" stroke-width="1.32" stroke-linejoin="round"/> <path d="M3 3H3.5V3C4.1642 3 4.72218 3.49942 4.79553 4.15955L5.55558 11" stroke="#323232" stroke-width="1.32" stroke-linecap="round" stroke-linejoin="round"/> <path d="M9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18C8.32843 18 9 18.6716 9 19.5Z" stroke="#323232" stroke-width="1.32"/> <path d="M18 19.5C18 20.3284 17.3284 21 16.5 21C15.6716 21 15 20.3284 15 19.5C15 18.6716 15.6716 18 16.5 18C17.3284 18 18 18.6716 18 19.5Z" stroke="#323232" stroke-width="1.32"/> </g>
+                                </svg>
+                                <div class="w-6 h-6">
+                                    <img src="f5.webp" alt="" class="rounded-full object-cover w-full h-full">
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+            </div>
+            <div class="relative z-0 overflow-visible pb-12">
+                <div class="swiper-button-prev absolute lg:text-xl md:right-2.5"></div>
+                <div class="swiper-button-next absolute lg:text-xl md:left-2.5"></div>
+                <div class="swiper-pagination lg:top-[-60px]"></div>
+                <div class="swiper heroSwiper overflow-visible w-full h-[400px] lg:h-[600px]">     
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide !w-[90%] lg:!w-[75%]">
+                            <img src="sli (2).webp" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="swiper-slide !w-[90%] lg:!w-[75%]">
+                            <img src="slide1 (1).webp" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="swiper-slide !w-[90%] lg:!w-[75%]">
+                            <img src="slide1 (2).webp" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="swiper-slide !w-[90%] lg:!w-[75%]">
+                            <img src="room.webp" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="lox" class="hidden lg:block absolute bg-white/75 h-[130px] w-[250px] p-4 z-10 right-[5%] bottom-[8%]">
+                            <div class="flex flex-col px-4">
+                                <h1 class="text-2xl font-semibold">Bohauss</h1>
+                                <p class="">Luxury big sofa 2-seat</p>
+                                <p class="font-semibold flex">Rp. 17.000.000&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg></p>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="mt-8 px-4 md:px-8 lg:px-12" id="services">
+        <div class="grid grid-cols-1 items-center-safe justify-center md:grid-cols-2 md:justify-between lg:grid-cols-4 lg:justify-between ">
+            <div class="flex my-[1rem] lg:my-[4rem]" id="svgtext">
+                <svg fill="#000000" height="50px" width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.00 512.00" xml:space="preserve" stroke="#000000" stroke-width="0.00512" transform="rotate(0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <g> <g> <path d="M383.783,51.897V0H128.217v51.897H73.491v57.897l0.417,1.771c3.905,16.584,20.406,46.298,55.931,52.644 c7.732,48.154,42.514,88.137,89.59,102.14v99.714h-27.516v48.762h-4.875c-26.791,0-48.588,21.797-48.588,48.588V512h235.102 v-48.588c0-26.791-21.796-48.588-48.588-48.588h-4.877v-48.762h-27.515v-99.714c47.076-14.003,81.857-53.986,89.59-102.14 c35.526-6.346,52.028-36.06,55.931-52.644l0.417-1.772V51.897H383.783z M128.217,131.389 c-15.875-6.036-21.754-20.474-23.38-25.587V83.243h23.38V131.389z M320.087,446.171h4.877c9.506,0,17.241,7.734,17.241,17.241 v17.241H169.796v-17.241c0-9.506,7.734-17.241,17.241-17.241h4.875H320.087z M288.74,397.409v17.415h-65.481v-17.415H288.74z M250.776,366.062v-94.496c0.145,0.006,0.29,0.003,0.436,0.009c1.597,0.06,3.193,0.098,4.789,0.098 c1.596,0,3.192-0.039,4.789-0.098c0.145-0.005,0.291-0.003,0.436-0.009v94.496H250.776z M352.435,143.891 c0.001,46.334-32.99,86.184-78.44,94.755c-4.439,0.837-8.945,1.359-13.469,1.568c-1.508,0.07-3.018,0.104-4.526,0.104 c-6.038,0-12.076-0.558-17.994-1.673c-45.452-8.571-78.442-48.421-78.442-94.754V83.243h192.871V143.891z M352.436,51.897H159.564 v-20.55h192.871V51.897z M407.162,105.725c-0.842,2.496-3.034,8.093-7.261,13.565c-4.436,5.743-9.772,9.785-16.119,12.178V83.243 h23.38V105.725z"/> </g> </g> </g>
+                </svg>
+                <span class="flex px-4 flex-col">
+                    <h2 class="text-[20px] font-semibold">High Quality</h2>
+                    <p>crafted from top materials</p>
+                </span>
+            </div>
+            <div class="flex my-[1rem] lg:my-[4rem]" id="svgtext2">
+               <svg width="50px" height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M8.38 12L10.79 14.42L15.62 9.57996" stroke="#292D32" stroke-width="1.44" stroke-linecap="round" stroke-linejoin="round"/> <path d="M10.75 2.44995C11.44 1.85995 12.57 1.85995 13.27 2.44995L14.85 3.80995C15.15 4.06995 15.71 4.27995 16.11 4.27995H17.81C18.87 4.27995 19.74 5.14995 19.74 6.20995V7.90995C19.74 8.29995 19.95 8.86995 20.21 9.16995L21.57 10.7499C22.16 11.4399 22.16 12.5699 21.57 13.2699L20.21 14.8499C19.95 15.1499 19.74 15.7099 19.74 16.1099V17.8099C19.74 18.8699 18.87 19.7399 17.81 19.7399H16.11C15.72 19.7399 15.15 19.9499 14.85 20.2099L13.27 21.5699C12.58 22.1599 11.45 22.1599 10.75 21.5699L9.17 20.2099C8.87 19.9499 8.31 19.7399 7.91 19.7399H6.18C5.12 19.7399 4.25 18.8699 4.25 17.8099V16.0999C4.25 15.7099 4.04 15.1499 3.79 14.8499L2.44 13.2599C1.86 12.5699 1.86 11.4499 2.44 10.7599L3.79 9.16995C4.04 8.86995 4.25 8.30995 4.25 7.91995V6.19995C4.25 5.13995 5.12 4.26995 6.18 4.26995H7.91C8.3 4.26995 8.87 4.05995 9.17 3.79995L10.75 2.44995Z" stroke="#292D32" stroke-width="1.44" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
+                </svg>
+                <span class="flex px-4 flex-col">
+                    <h2 class="text-[20px] font-semibold">Warranty protection</h2>
+                    <p>Over 2 years</p>
+                </span>
+            </div>
+            <div class="flex my-[1rem] lg:my-[4rem] pr-16 md:pr-4" id="svgtext3">                
+                <svg fill="#000000" width="50px" height="50px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <g data-name="16 hand delivery box" id="_16_hand_delivery_box"> <path d="M60.27,42.62l-.43-1.19a3.851,3.851,0,0,0-4.2-2.42c-.05.01-.09.01-.14.02V13.5c0-.01-.01-.02-.01-.04a.8.8,0,0,0-.06-.3.637.637,0,0,0-.02-.07c-.01-.01-.01-.03-.02-.04l-3-6a.988.988,0,0,0-.89-.55h-27a1,1,0,0,0-.83.45l-4,6a.388.388,0,0,0-.06.11c-.01.03-.03.05-.04.08a1.372,1.372,0,0,0-.07.34V32.92c-.15.02-.3.04-.45.07l-4.08.92V30.5a2.006,2.006,0,0,0-2-2H5.5a2.006,2.006,0,0,0-2,2v25a2.006,2.006,0,0,0,2,2h7.47a2.006,2.006,0,0,0,2-2V52.89L31.5,55.88a12.715,12.715,0,0,0,7-.69l19.52-7.73A3.8,3.8,0,0,0,60.27,42.62ZM12.97,55.5H5.5v-25h7.47ZM42.5,8.5h8.38l2,4H42.5Zm-8,0h6v4h-6Zm0,6h6v12l-2.4-1.8a1,1,0,0,0-1.2,0l-2.4,1.8Zm-9.46-6H32.5v4H22.37Zm-3.54,6h11v14a.977.977,0,0,0,.55.89,1,1,0,0,0,1.05-.09l3.4-2.55,3.4,2.55a1.029,1.029,0,0,0,.6.2.908.908,0,0,0,.45-.11.977.977,0,0,0,.55-.89v-14h11V39.28c-.5.07-1.01.15-1.5.24-1.01.16-2.06.34-3.08.44a53.558,53.558,0,0,1-7.03.33,53.365,53.365,0,0,1-5.91-.52,3.661,3.661,0,0,0-.33-2.03,4,4,0,0,0-2.54-2.08l-9.48-2.57a9.536,9.536,0,0,0-2.13-.32ZM57.28,45.6,37.77,53.33a10.729,10.729,0,0,1-5.91.58L14.97,50.86V35.96l4.52-1.02a7.517,7.517,0,0,1,3.62.08l9.47,2.57a1.992,1.992,0,0,1,1.27,1.02,1.725,1.725,0,0,1,.03,1.44,2.036,2.036,0,0,1-2.02,1.17l-8.22-1.7a1,1,0,0,0-.41,1.96l8.28,1.71a.355.355,0,0,0,.1.02c.14.01.27.02.4.02a4.068,4.068,0,0,0,3.2-1.55,56.551,56.551,0,0,0,6.62.61,55.905,55.905,0,0,0,7.3-.34c1.08-.11,2.16-.29,3.2-.46,1.14-.19,2.32-.39,3.48-.49a1.969,1.969,0,0,1,2.15,1.12l.43,1.18A1.814,1.814,0,0,1,57.28,45.6Z"/> <path d="M49.5,31.5h-6a2.006,2.006,0,0,0-2,2v2a2.006,2.006,0,0,0,2,2h6a2.006,2.006,0,0,0,2-2v-2A2.006,2.006,0,0,0,49.5,31.5Zm0,4h-6v-2h6Z"/> </g> </g>
+                </svg>
+                <span class="flex px-4 flex-col">
+                    <h2 class="text-[20px] font-semibold">Free Shipping</h2>
+                    <p>Order over 150$</p>
+                </span>
+            </div>  
+            <div class="flex my-[1rem] lg:my-[4rem]" id="svgtext4">
+                <svg width="50px" height="50px" viewBox="0 0 1024 1024" fill="#000000" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M983.902 1023.894H40.098a7.994 7.994 0 0 1-7.998-8v-95.98c0-68.64 35.562-94.948 101.174-119.474 11.654-4.342 26.706-8.858 42.64-13.636 67.572-20.262 160.124-48.022 160.124-106.838 0-4.422 3.578-7.998 7.998-7.998s7.998 3.576 7.998 7.998c0 70.718-99.134 100.45-171.528 122.162-15.676 4.702-30.478 9.138-41.63 13.31-61.504 22.978-90.778 44.49-90.778 104.476v87.982h927.808v-87.982c0-59.986-29.276-81.498-90.792-104.476-11.138-4.172-25.95-8.61-41.618-13.31-72.39-21.712-171.528-51.444-171.528-122.162a7.994 7.994 0 0 1 7.998-7.998 7.992 7.992 0 0 1 7.998 7.998c0 58.816 92.544 86.576 160.124 106.838 15.934 4.78 30.992 9.294 42.63 13.636 65.626 24.528 101.182 50.834 101.182 119.474v95.98c0 4.422-3.578 8-7.998 8z" fill="" /><path d="M512 719.958c-109.562 0-268.006-158.608-286.152-327.058a7.99 7.99 0 0 1 7.092-8.81c4.552-0.39 8.342 2.71 8.81 7.092 8.154 75.656 46.888 155.576 106.274 219.252 53.786 57.69 116.616 93.528 163.974 93.528 51.928 0 121.724-42.836 177.854-109.134a8.044 8.044 0 0 1 11.28-0.938 8.014 8.014 0 0 1 0.938 11.28c-59.034 69.732-133.644 114.788-190.07 114.788zM741.14 543.992a7.992 7.992 0 0 1-6.92-12.012c32.54-56.058 49.722-115.516 49.722-171.95a7.994 7.994 0 0 1 8-7.998 7.992 7.992 0 0 1 7.996 7.998c0 59.254-17.934 121.482-51.878 179.978a7.984 7.984 0 0 1-6.92 3.984z" fill="" /><path d="M344.036 694.632a7.994 7.994 0 0 1-7.998-7.998v-68.766c0-4.422 3.578-7.998 7.998-7.998s7.998 3.576 7.998 7.998v68.766a7.994 7.994 0 0 1-7.998 7.998zM679.964 687.962a7.994 7.994 0 0 1-7.998-7.998v-62.08a7.994 7.994 0 0 1 7.998-7.998 7.992 7.992 0 0 1 7.998 7.998v62.08a7.992 7.992 0 0 1-7.998 7.998zM376.02 992.462c-0.874 0-1.756-0.14-2.632-0.454a8 8 0 0 1-4.92-10.186 151.48 151.48 0 0 1 16.894-33.976c28.276-42.524 75.618-67.924 126.638-67.924 11.358 0 22.668 1.25 33.62 3.732a8.006 8.006 0 0 1 6.06 9.562c-0.968 4.31-5.28 7.044-9.56 6.03a137.668 137.668 0 0 0-30.12-3.328c-45.654 0-88.012 22.73-113.312 60.786a135.646 135.646 0 0 0-15.114 30.4 8 8 0 0 1-7.554 5.358zM647.972 992.462a8.01 8.01 0 0 1-7.56-5.358 134.146 134.146 0 0 0-15.124-30.384 137.06 137.06 0 0 0-22.62-26.166 7.986 7.986 0 0 1-0.624-11.294c2.952-3.266 8.03-3.546 11.278-0.61a153.044 153.044 0 0 1 25.308 29.198 152.962 152.962 0 0 1 16.902 33.976 8.012 8.012 0 0 1-7.56 10.638zM496.004 991.9a7.996 7.996 0 0 1-5.656-13.654l143.97-143.968a7.996 7.996 0 1 1 11.31 11.308l-143.97 143.97a7.964 7.964 0 0 1-5.654 2.344zM823.936 328.038a7.994 7.994 0 0 1-7.998-8C815.938 152.45 679.59 16.102 512 16.102S208.064 152.45 208.064 320.04c0 4.422-3.578 8-8 8a7.994 7.994 0 0 1-7.998-8C192.066 143.63 335.592 0.106 512 0.106c176.4 0 319.934 143.526 319.934 319.934a7.994 7.994 0 0 1-7.998 7.998z" fill="" /><path d="M200.064 759.95a7.994 7.994 0 0 1-7.998-8V320.04a7.994 7.994 0 0 1 7.998-7.998c4.422 0 8 3.578 8 7.998v431.91c0 4.422-3.578 8-8 8z" fill="" /><path d="M823.936 759.95a7.994 7.994 0 0 1-7.998-8V320.04c0-4.42 3.576-7.998 7.998-7.998s7.998 3.578 7.998 7.998v431.91c0 4.422-3.576 8-7.998 8z" fill="" /><path d="M201.682 375.864l-3.234-15.668c277.74-57.308 505.576-282.95 507.854-285.222l11.31 11.294c-2.294 2.312-233.41 231.296-515.93 289.596z" fill="" /><path d="M820.874 344.988c-149.876-54.59-259.04-137.746-260.118-138.582l9.748-12.684c1.062 0.82 108.4 82.522 255.838 136.236l-5.468 15.03z" fill="" /><path d="M603.982 607.98a8.018 8.018 0 0 1-7.938-6.984 8.002 8.002 0 0 1 6.938-8.95c1.482-0.188 149.718-19.762 184.336-84.664 10.216-19.106 9.374-39.976-2.532-63.792a8.004 8.004 0 0 1 3.578-10.732 8.012 8.012 0 0 1 10.732 3.578c14.2 28.4 14.98 54.808 2.342 78.492-38.524 72.164-190.024 92.176-196.458 92.988a7.138 7.138 0 0 1-0.998 0.064z" fill="" /><path d="M577.986 623.976c-19.058 0-33.992-10.544-33.992-23.996 0-13.45 14.934-23.994 33.992-23.994s33.992 10.544 33.992 23.994c0 13.452-14.934 23.996-33.992 23.996z m0-31.992c-11.154 0-17.996 5.17-17.996 7.996 0 2.828 6.842 8 17.996 8s17.996-5.172 17.996-8c0-2.826-6.842-7.996-17.996-7.996z" fill="" /><path d="M512 815.938c-155.264 0-195.068-81.14-196.686-84.594a7.992 7.992 0 0 1 3.85-10.636c3.976-1.876 8.734-0.156 10.616 3.826 0.398 0.812 37.938 75.406 182.22 75.406 144.876 0 176.244-74.204 176.526-74.954 1.64-4.092 6.312-6.108 10.404-4.452a8.016 8.016 0 0 1 4.468 10.388c-1.406 3.468-35.804 85.016-191.398 85.016z" fill="" /></svg>
+                <span class="flex px-4 flex-col">
+                    <h2 class="text-[20px] font-semibold">24/7 Support</h2>
+                    <p>Dedicated Support</p>
+                </span>
+            </div>
+        </div> 
+    </section>
+
+    <section id="our-products">
+        <h1 class="text-4xl text-center font-semibold my-6 ">Our Products</h1>
+        <div id="product-section" class="px-4 md:px-8 lg:px-12">
+            <div id="main-grid" class="grid grid-cols-1 gap-6 justify-evenly sm:grid-cols-2 lg:grid-cols-4">
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden hover:cursor-pointer">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (1).webp" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-cyan-300 text-white text-[10px] font-bold rounded-full">New</span>
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Syltherine</h2>
+                        <p class="text-[12px]">Stylish Cafe Chair</p>
+                        <span class="flex gap-3 ">
+                            <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 2.500.000</p>
+                            <p class="font-semibold lg:text-[10px] line-through text-gray-400">Rp 3.500.000</p>
+                        </span>
+                    </div>
+                </div><!--card end-->
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden   hover:cursor-pointer ">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (3).webp" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-red-600 text-white text-[10px] font-bold rounded-full">-30%</span>
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Leviosa</h2>
+                        <p class="text-[12px]">Stylish Cafe Chair</p>
+                        <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 2.500.000</p>
+                    </div>
+                </div><!--card end-->
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden   hover:cursor-pointer ">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (2).webp" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-cyan-300 text-white text-[10px] font-bold rounded-full">New</span>
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Lolito</h2>
+                        <p class="text-[12px]">Luxury Big Sofa</p>
+                        <span class="flex gap-3">
+                            <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 7.000.000</p>
+                            <p class="font-semibold lg:text-[10px] line-through text-gray-400">Rp 14.000.000</p>
+                        </span>
+                    </div>
+                </div><!--card end-->
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden   hover:cursor-pointer ">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (4).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Respira</h2>
+                        <p class="text-[12px]">Minimalist Chair</p>
+                        <p class="font-semibold lg:text-[12px] text-[16px]">Rp 500.000</p>
+                    </div>
+                </div><!--card end-->
+                 
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden  hover:cursor-pointer  ">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (5).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Grifo</h2>
+                        <p class="text-[12px]">Night Lamp</p>
+                        <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 1.500.000</p>
+                    </div>
+                </div><!--card end-->
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden  hover:cursor-pointer  ">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (6).webp" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-cyan-300 text-white text-[10px] font-bold rounded-full">New</span>
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Ariaola</h2>
+                        <p class="text-[12px]">Painting Room set</p>
+                        <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 150.000</p>
+                    </div>
+                </div><!--card end-->
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden  hover:cursor-pointer  ">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (7).webp" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-red-600 text-white text-[10px] font-bold rounded-full">-50%</span>
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Livster</h2>
+                        <p class="text-[12px]">Living Room Set</p>
+                         <span class="flex gap-3">
+                            <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 7.000.000</p>
+                            <p class="font-semibold lg:text-[10px] line-through text-gray-400">Rp 14.000.000</p>
+                        </span>
+                    </div>
+                </div><!--card end-->
+                <div class="card-container group relative w-full bg-white shadow-md overflow-hidden hover:cursor-pointer">
+                    <div class="h-[25rem] w-full overflow-hidden relative">
+                        <img src="fur (8).webp" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-cyan-300 text-white text-[10px] font-bold rounded-full">New</span>
+                    </div>
+                    <div class="card-body flex flex-col px-4 pt-1 pb-6 bg-gray-300 absolute bottom-0 left-0 transition-all duration-500 ease-in-out group-hover:h-[60%] h-[22%] w-full">
+
+                        <h2 class="font-semibold lg:text-[16px] xl:text-[20px]">Studly</h2>
+                        <p class="text-[12px]">Study Table</p>
+                        <p class="font-semibold lg:text-[12px] xl:text-[16px]">Rp 500.000</p>
+                    </div>
+                </div><!--card end-->
+            </div>
+        </div>
+        <div class="flex justify-center px-12 my-8 ">
+            <button class="w-[20rem] h-12 border border-orange-400 text-orange-400 transition-transform duration-300 hover:scale-110 hover:bg-orange-400 hover:text-white hover:cursor-pointer">Show More</button>
+        </div>
+    </section>
+
+    <section id="rooms-inspiration" class="px-4 md:px-8 lg:px-12 bg-orange-50 py-[3rem]">
+        <div id="grid-slider" class="grid grid-cols-1 gap-8 relative lg:grid-cols-3 lg:gap-12 items-center">
+             <!-- <div class="bg-white/75 bottom-20 right-50 h-[120px] w-[200px] flex absolute justify-center items-center">
+                                <span id="ffx" class="flex flex-col text-center items-center-center">
+                                    <div class="flex justify-center items-center">
+                                        <p class="">01&nbsp</p>
+                                        <span class="w-6 h-[2px] bg-gray-400"></span>
+                                        <p>&nbspBed Room</p>
+                                    </div>
+                                    <h1 class="text-2xl font-semibold ">Inner Peace</h1>
+                                </span>
+                            </div> -->
+            <div id="fox" class="w-full flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <h1 class="text-3xl lg:text-4xl font-semibold leading-tight">50+ Beautiful rooms inspiration</h1>
+                    <p class="py-4 text-sm md:text-base max-w-md mx-auto lg:mx-0">Our designer already made a lot of beautiful <br> prototypes of rooms that inspire you</p>
+                    <button class="bg-orange-400 text-white px-8 py-3 hover:bg-orange-500 transition self-center lg:self-start">Explore More</button>
+            </div>
+            <div class="w-full lg:col-span-2 overflow-hidden relative">
+                <div class="swiper room h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] ">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="fur (9).webp" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="room.webp" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="puzz (1).webp" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="puzz (2).webp" alt="" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-nav absolute right-12 sm:right-16 top-1/2 -translate-y-1/2 z-20">
+                    <button class="hero-next bg-white shadow-lg rounded-full w-10 h-10 text-xl text-orange-400">></button>
+                </div>
+                <div class="rooms-pagination mt-6 mb-3 flex justify-center"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips" class="py-12 px-4 md:px-8 lg:px-12 relative">
+        <h1 class="text-center font-semibold text-3xl lg:text-4xl mb-12">Tips & Tricks</h1>
+        <div class="tips-prev absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20">
+            <button class="tips-p bg-white shadow-lg rounded-full w-10 h-10 text-xl text-orange-400">&lt;</button>
+        </div>
+        <div class="tips-next absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20">
+            <button class="tips-n bg-white shadow-lg rounded-full w-10 h-10 text-xl text-orange-400">></button>
+        </div>
+        <div id="tips-grid" class="swiper tipsSwiper mb-12">
+            <div class="swiper-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div class="swiper-slide"> 
+                    <div class="card-container w-full bg-white shadow-md overflow-hidden">
+                        <div class="h-56 md:h-64 overflow-hidden">
+                                <img src="sli.webp" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="card-body p-4 bg-gray-100">
+                                <h1 class="font-semibold text-lg md:text-xl">How to create a living <br> room to love</h1>
+                                <p class="text-xs pt-2">20 Jan 2020</p>
+                            </div>
+                        </div><!--card end-->
+                </div> 
+                <div class="swiper-slide"> 
+                    <div class="card-container w-full bg-white shadow-md overflow-hidden">
+                        <div class="h-56 md:h-64 overflow-hidden">
+                                <img src="sli (2).webp" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="card-body p-4 bg-gray-100">
+                                <h1 class="font-semibold text-lg md:text-xl">Train your creativity <br> in the right environment</h1>
+                                <p class="text-xs pt-2">20 Jan 2020</p>
+                            </div>
+                        </div><!--card end-->
+                </div> 
+                <div class="swiper-slide"> 
+                    <div class="card-container w-full bg-white shadow-md overflow-hidden">
+                        <div class="h-56 md:h-64 overflow-hidden">
+                                <img src="fur (6).webp" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="card-body p-4 bg-gray-100">
+                                <h1 class="font-semibold text-lg md:text-xl">View yourself living the <br> dream life</h1>
+                                <p class="text-xs pt-2">20 Jan 2020</p>
+                            </div>
+                        </div><!--card end-->
+                </div> 
+                <div class="swiper-slide"> 
+                    <div class="card-container w-full bg-white shadow-md overflow-hidden">
+                        <div class="h-56 md:h-64 overflow-hidden">
+                                <img src="fur (8).webp" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="card-body p-4 bg-gray-100">
+                                <h1 class="font-semibold text-lg md:text-xl">Make your cooking activity <br> more fun with good setup</h1>
+                                <p class="text-xs pt-2">10 Jan 2020</p>
+                            </div>
+                        </div><!--card end-->
+                </div> 
+                <div class="swiper-slide"> 
+                    <div class="card-container w-full bg-white shadow-md overflow-hidden">
+                        <div class="h-56 md:h-64 overflow-hidden">
+                                <img src="fur1.webp" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="card-body p-4 bg-gray-100">
+                                <h1 class="font-semibold text-lg md:text-xl">Solution for clean working <br>space</h1>
+                                <p class="text-xs pt-2">20 Jan 2020</p>
+                            </div>
+                        </div><!--card end-->
+                </div> 
+            </div>
+        </div>
+        <div class="tips-pagination flex justify-center"></div>
+    </section>
+
+    <section id="share" class="hidden lg:block px-4 md:px-8 lg:px-12 overflow-hidden">
+        <span class="text-center">
+            <p>Share your setup with</p>
+            <h1 class="font-bold text-4xl py-2">#FuniroFurniture</h1>
+        </span>
+        <div id="image-grid" class="grid grid-cols-4 gap-4">
+            <div id="f-g" class="flex flex-col gap-4 mb-12">
+                <div id="ft-row" class="flex items-end gap-4 justify-start">
+                    <div class="h-[20rem] w-24 overflow-hidden">
+                        <img src="fur (4).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="h-[16rem] w-96 overflow-hidden self-end justify-self-start">
+                        <img src="fur1.webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div id="sec-row" class="flex items-start gap-4 justify-start">
+                    <div class="h-[16rem] w-[10rem] overflow-hidden">
+                        <img src="fur (5).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="h-[12rem] w-80 overflow-hidden">
+                        <img src="fin.webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div id="s-g" class="flex flex-col gap-4 mt-12">
+                <div class="flex gap-4 items-end">
+                    <div class="flex h-[18rem] w-[10rem]">
+                        <img src="room.webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex w-full h-[25rem]">
+                        <img src="swo (1).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-full h-[15rem]">
+                        <img src="puzz (3).webp" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div id="t-g" class="flex flex-col gap-4">
+                <div class="flex gap-4 items-end justify-start">
+                    <div class="w-[12rem] h-[16rem] gap-4">
+                        <img src="fur (2).webp" alt="" class="object-cover h-full w-full">
+                    </div>
+                    <div class="w-[16rem] h-[25rem]">
+                        <img src="fur (7).webp" alt="" class="object-cover h-full w-full">
+                    </div>
+                </div>
+                <div class="flex gap-4 justify-start">
+                    <div class="w-[8rem] h-[10rem]">
+                        <img src="fur (9).webp" alt="" srcset="" class="object-cover h-full w-full">
+                    </div>
+                    <div class="w-[14rem] h-[8rem]">
+                        <img src="sli.webp" alt="" class="object-cover h-full w-full">
+                    </div>
+                </div>
+            </div>
+            <div id="frth-g" class="flex flex-col gap-4">
+                <div class="flex gap-4 items-end">
+                    <div class="h-[14rem] w-full overflow-hidden">
+                        <img src="puzz (1).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="h-[24rem] w-40 overflow-hidden">
+                        <img src="fur (6).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="h-[12rem] w-[18rem] overflow-hidden">
+                        <img src="fur (8).webp" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parallax" class="bg-[url('nain.webp')] bg-center bg-cover lg:bg-fixed flex items-center justify-center min-h-[500px] px-12 py-12">
+        <div class="bg-white hover:bg-gray-100 transition duration-300 shadow-xl rounded-lg p-6 md:p-8 w-full max-w-3xl text-center cursor-pointer">
+            <p class="text-xl md:text-2xl lg:text-3xl mb-6">Follow US on</p>
+            <div class="flex gap-4 items-center justify-evenly">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <svg class="w-8 h-8 md:w-10 md:h-10" viewBox="0 0 20 20">
+                    <path d="M12 7.90001C11.1891 7.90001 10.3964 8.14048 9.72218 8.59099C9.04794 9.0415 8.52243 9.68184 8.21211 10.431C7.90179 11.1802 7.8206 12.0046 7.9788 12.7999C8.13699 13.5952 8.52748 14.3258 9.10088 14.8992C9.67427 15.4725 10.4048 15.863 11.2001 16.0212C11.9955 16.1794 12.8198 16.0982 13.569 15.7879C14.3182 15.4776 14.9585 14.9521 15.409 14.2779C15.8596 13.6036 16.1 12.8109 16.1 12C16.1013 11.4612 15.9962 10.9275 15.7906 10.4295C15.585 9.93142 15.2831 9.47892 14.9021 9.09794C14.5211 8.71695 14.0686 8.415 13.5706 8.20942C13.0725 8.00385 12.5388 7.8987 12 7.90001ZM12 14.67C11.4719 14.67 10.9557 14.5134 10.5166 14.22C10.0776 13.9267 9.73534 13.5097 9.53326 13.0218C9.33117 12.5339 9.2783 11.9971 9.38132 11.4791C9.48434 10.9612 9.73863 10.4854 10.112 10.112C10.4854 9.73863 10.9612 9.48434 11.4791 9.38132C11.9971 9.2783 12.5339 9.33117 13.0218 9.53326C13.5097 9.73534 13.9267 10.0776 14.22 10.5166C14.5134 10.9557 14.67 11.4719 14.67 12C14.67 12.7081 14.3887 13.3873 13.888 13.888C13.3873 14.3887 12.7081 14.67 12 14.67ZM17.23 7.73001C17.23 7.9278 17.1714 8.12114 17.0615 8.28558C16.9516 8.45003 16.7954 8.57821 16.6127 8.65389C16.43 8.72958 16.2289 8.74938 16.0349 8.7108C15.8409 8.67221 15.6628 8.57697 15.5229 8.43712C15.3831 8.29727 15.2878 8.11909 15.2492 7.92511C15.2106 7.73112 15.2304 7.53006 15.3061 7.34733C15.3818 7.16461 15.51 7.00843 15.6744 6.89855C15.8389 6.78866 16.0322 6.73001 16.23 6.73001C16.4952 6.73001 16.7496 6.83537 16.9371 7.02291C17.1247 7.21044 17.23 7.4648 17.23 7.73001ZM19.94 8.73001C19.9691 7.48684 19.5054 6.28261 18.65 5.38001C17.7522 4.5137 16.5474 4.03897 15.3 4.06001C14 4.00001 10 4.00001 8.70001 4.06001C7.45722 4.0331 6.25379 4.49652 5.35001 5.35001C4.49465 6.25261 4.03093 7.45684 4.06001 8.70001C4.00001 10 4.00001 14 4.06001 15.3C4.03093 16.5432 4.49465 17.7474 5.35001 18.65C6.25379 19.5035 7.45722 19.9669 8.70001 19.94C10.02 20.02 13.98 20.02 15.3 19.94C16.5432 19.9691 17.7474 19.5054 18.65 18.65C19.5054 17.7474 19.9691 16.5432 19.94 15.3C20 14 20 10 19.94 8.70001V8.73001ZM18.24 16.73C18.1042 17.074 17.8993 17.3863 17.6378 17.6478C17.3763 17.9093 17.064 18.1142 16.72 18.25C15.1676 18.5639 13.5806 18.6715 12 18.57C10.4228 18.6716 8.83902 18.564 7.29001 18.25C6.94608 18.1142 6.63369 17.9093 6.37223 17.6478C6.11076 17.3863 5.90579 17.074 5.77001 16.73C5.35001 15.67 5.44001 13.17 5.44001 12.01C5.44001 10.85 5.35001 8.34001 5.77001 7.29001C5.90196 6.94268 6.10547 6.62698 6.36733 6.36339C6.62919 6.09981 6.94355 5.89423 7.29001 5.76001C8.83902 5.44599 10.4228 5.33839 12 5.44001C13.5806 5.33856 15.1676 5.44616 16.72 5.76001C17.064 5.89579 17.3763 6.10076 17.6378 6.36223C17.8993 6.62369 18.1042 6.93608 18.24 7.28001C18.66 8.34001 18.56 10.84 18.56 12C18.56 13.16 18.66 15.67 18.24 16.72V16.73Z" fill="#000000"/>
+                    </svg>
+                    <span class="text-[10px] md:text-xl font-semibold break-all">@furniro</span>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <svg class="w-8 h-8 md:w-10 md:h-10" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H15V13.9999H17.0762C17.5066 13.9999 17.8887 13.7245 18.0249 13.3161L18.4679 11.9871C18.6298 11.5014 18.2683 10.9999 17.7564 10.9999H15V8.99992C15 8.49992 15.5 7.99992 16 7.99992H18C18.5523 7.99992 19 7.5522 19 6.99992V6.31393C19 5.99091 18.7937 5.7013 18.4813 5.61887C17.1705 5.27295 16 5.27295 16 5.27295C13.5 5.27295 12 6.99992 12 8.49992V10.9999H10C9.44772 10.9999 9 11.4476 9 11.9999V12.9999C9 13.5522 9.44771 13.9999 10 13.9999H12V21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z" fill="#0F0F0F"/>
+                    </svg>
+                    <span class="text-[10px] md:text-xl font-semibold break-all">@furnirofb</span>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <svg class="w-8 h-8 md:w-10 md:h-10" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.49614 7.13176C9.18664 6.9549 8.80639 6.95617 8.49807 7.13509C8.18976 7.31401 8 7.64353 8 8V16C8 16.3565 8.18976 16.686 8.49807 16.8649C8.80639 17.0438 9.18664 17.0451 9.49614 16.8682L16.4961 12.8682C16.8077 12.6902 17 12.3589 17 12C17 11.6411 16.8077 11.3098 16.4961 11.1318L9.49614 7.13176ZM13.9844 12L10 14.2768V9.72318L13.9844 12Z" fill="#0F0F0F"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 8.25027 0 6.3754 0.954915 5.06107C1.26331 4.6366 1.6366 4.26331 2.06107 3.95491C3.3754 3 5.25027 3 9 3H15C18.7497 3 20.6246 3 21.9389 3.95491C22.3634 4.26331 22.7367 4.6366 23.0451 5.06107C24 6.3754 24 8.25027 24 12C24 15.7497 24 17.6246 23.0451 18.9389C22.7367 19.3634 22.3634 19.7367 21.9389 20.0451C20.6246 21 18.7497 21 15 21H9C5.25027 21 3.3754 21 2.06107 20.0451C1.6366 19.7367 1.26331 19.3634 0.954915 18.9389C0 17.6246 0 15.7497 0 12ZM9 5H15C16.9194 5 18.1983 5.00275 19.1673 5.10773C20.0989 5.20866 20.504 5.38448 20.7634 5.57295C21.018 5.75799 21.242 5.98196 21.4271 6.23664C21.6155 6.49605 21.7913 6.90113 21.8923 7.83269C21.9973 8.80167 22 10.0806 22 12C22 13.9194 21.9973 15.1983 21.8923 16.1673C21.7913 17.0989 21.6155 17.504 21.4271 17.7634C21.242 18.018 21.018 18.242 20.7634 18.4271C20.504 18.6155 20.0989 18.7913 19.1673 18.8923C18.1983 18.9973 16.9194 19 15 19H9C7.08058 19 5.80167 18.9973 4.83269 18.8923C3.90113 18.7913 3.49605 18.6155 3.23664 18.4271C2.98196 18.242 2.75799 18.018 2.57295 17.7634C2.38448 17.504 2.20866 17.0989 2.10773 16.1673C2.00275 15.1983 2 13.9194 2 12C2 10.0806 2.00275 8.80167 2.10773 7.83269C2.20866 6.90113 2.38448 6.49605 2.57295 6.23664C2.75799 5.98196 2.98196 5.75799 3.23664 5.57295C3.49605 5.38448 3.90113 5.20866 4.83269 5.10773C5.80167 5.00275 7.08058 5 9 5Z" fill="#0F0F0F"/>
+                    </svg>
+                    <span class="text-[10px] md:text-xl font-semibold">Build With Furniro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="px-4 md:px-8 lg:px-12 bg-white">
+        <hr class="border-0 bg-gray-300 w-full h-[1px] my-20">
+        <div id="footerlist" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 my-12">
+            <ul class="flex flex-col gap-4">
+                <li class="font-bold text-[26px] flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Funiro</li>
+                <li class="flex items-start gap-3 relative transition-all duration-300 hover:translate-x-2"><svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12px" height="12px" viewBox="0 0 64.00 64.00" enable-background="new 0 0 64 64" xml:space="preserve" fill="#000000" class="absolute top-2">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path fill="#231F20" d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24 C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24 C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z"/> </g>
+                    </svg> <div class="pl-5">Worldwide furniture store since 2020. We sell over 1000+ branded products on our website</div></li>
+                <li class=" flex items-start gap-3 relative transition-all duration-300 hover:translate-x-2"><svg width="10px" height="10px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" stroke="#000000" class="absolute top-2">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <title>call [#00ff22]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M61.7302966,7173.99596 C61.2672966,7175.40296 59.4532966,7176.10496 58.1572966,7175.98796 C56.3872966,7175.82796 54.4612966,7174.88896 52.9992966,7173.85496 C50.8502966,7172.33496 48.8372966,7169.98396 47.6642966,7167.48896 C46.8352966,7165.72596 46.6492966,7163.55796 47.8822966,7161.95096 C48.3382966,7161.35696 48.8312966,7161.03996 49.5722966,7161.00296 C50.6002966,7160.95296 50.7442966,7161.54096 51.0972966,7162.45696 C51.3602966,7163.14196 51.7112966,7163.84096 51.9072966,7164.55096 C52.2742966,7165.87596 50.9912966,7165.93096 50.8292966,7167.01396 C50.7282966,7167.69696 51.5562966,7168.61296 51.9302966,7169.09996 C52.6632966,7170.05396 53.5442966,7170.87696 54.5382966,7171.50296 C55.1072966,7171.86196 56.0262966,7172.50896 56.6782966,7172.15196 C57.6822966,7171.60196 57.5872966,7169.90896 58.9912966,7170.48196 C59.7182966,7170.77796 60.4222966,7171.20496 61.1162966,7171.57896 C62.1892966,7172.15596 62.1392966,7172.75396 61.7302966,7173.99596 C61.4242966,7174.92396 62.0362966,7173.06796 61.7302966,7173.99596" id="call-[#00ff22]"> </path> </g> </g> </g> </g>
+                    </svg><div class="pl-5">Sawojajar Malang, Indonesia <br>+6289 456 3455</div></li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>www.funiro.com</li>
+            </ul>
+            <ul class="flex flex-col gap-4">
+                <li class=" flex font-bold text-[26px] items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Menu</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Products</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Rooms</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Inspirations</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>About Us</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Terms and Policy</li>
+            </ul>
+            <ul class="flex flex-col gap-4">
+                <li class=" flex font-bold text-[26px] items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Account</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>My Account</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Checkout</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>My Cart</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>My catalog</li>
+            </ul>
+            <ul class="flex flex-col gap-4">
+                <li class="font-bold text-[26px] flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Stay connected</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Instagram</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Facebook</li>
+                <li class=" flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Twitter</li>
+            </ul>
+            <ul class="flex flex-col gap-4">
+                <li class="font-bold text-[26px] flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>Stay Updated</li>
+                <li class="flex items-center transition-all duration-300 hover:translate-x-2"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg><input type="email" placeholder="Enter your email" class="bg-gray-200 w-[6rem] text-[10px] md:w-[8rem] md:text-[12px] lg:w-[8rem] xl:w-[10rem] p-2 h-8 lg:text-[12px]">
+                    <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="bg-orange-300">
+                        <path d="M20.33 3.66996C20.1408 3.48213 19.9035 3.35008 19.6442 3.28833C19.3849 3.22659 19.1135 3.23753 18.86 3.31996L4.23 8.19996C3.95867 8.28593 3.71891 8.45039 3.54099 8.67255C3.36307 8.89471 3.25498 9.16462 3.23037 9.44818C3.20576 9.73174 3.26573 10.0162 3.40271 10.2657C3.5397 10.5152 3.74754 10.7185 4 10.85L10.07 13.85L13.07 19.94C13.1906 20.1783 13.3751 20.3785 13.6029 20.518C13.8307 20.6575 14.0929 20.7309 14.36 20.73H14.46C14.7461 20.7089 15.0192 20.6023 15.2439 20.4239C15.4686 20.2456 15.6345 20.0038 15.72 19.73L20.67 5.13996C20.7584 4.88789 20.7734 4.6159 20.7132 4.35565C20.653 4.09541 20.5201 3.85762 20.33 3.66996ZM4.85 9.57996L17.62 5.31996L10.53 12.41L4.85 9.57996ZM14.43 19.15L11.59 13.47L18.68 6.37996L14.43 19.15Z" fill="#000000"/>
+                    </svg>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+new Swiper(".heroSwiper", {
+    loop: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    spaceBetween: 24,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+
+    speed: 1200,
+});
+</script>
+<script>
+const roomSwiper = new Swiper(".room", {
+  spaceBetween: 20,
+  loop:true,
+
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+    },
+    640: {
+      slidesPerView: 1.2,
+    },
+    768: {
+      slidesPerView: 1.5,
+    },
+    1024: {
+      slidesPerView: 1.8,
+    },
+    1280: {
+      slidesPerView: 2,
+    },
+  },
+
+  navigation: {
+    nextEl: ".hero-next",
+  },
+
+  pagination: {
+    el: ".rooms-pagination",
+    clickable: true,
+  },
+});
+</script>
+<script>
+new Swiper('.tipsSwiper',{
+  spaceBetween: 20,
+  loop:true,
+  slidesPerView: 1,
+
+  breakpoints: {
+    640: {
+      slidesPerView: 1.2,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+
+  navigation: {
+    nextEl: ".tips-n",
+    prevEl: ".tips-p",
+  },
+
+  pagination: {
+    el: ".tips-pagination",
+    clickable: true,
+  },
+})
+</script>
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+const hamburger = document.getElementById("iconHamburger");
+const closeIcon = document.getElementById("iconClose");
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+
+  hamburger.classList.toggle("hidden");
+  closeIcon.classList.toggle("hidden");
+});
+</script>
+</body>
+</html>
